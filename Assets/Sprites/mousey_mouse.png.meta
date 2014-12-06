@@ -1,0 +1,135 @@
+fileFormatVersion: 2
+guid: 04c4d022661d204408d892ec4ec36895
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mouse_body
+    21300002: mouse_head
+    21300004: mouse_fore
+    21300006: mouse_thigh
+    21300008: mouse_long_foot
+    21300010: mouse_tail_segment
+    21300012: mouse_tail_end
+    21300014: mouse_foot
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mouse_body
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 35
+        width: 47
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_head
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 27
+        width: 68
+        height: 37
+      alignment: 9
+      pivot: {x: .352145702, y: .338752121}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_fore
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 18
+        height: 32
+      alignment: 9
+      pivot: {x: .51841408, y: .786569178}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_thigh
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1
+        width: 32
+        height: 31
+      alignment: 9
+      pivot: {x: .772758722, y: .745917082}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_long_foot
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 15
+        width: 28
+        height: 11
+      alignment: 9
+      pivot: {x: .227734432, y: .640616477}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_tail_segment
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 5
+        width: 11
+        height: 16
+      alignment: 9
+      pivot: {x: .51004374, y: .2237885}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_tail_end
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 4
+        width: 9
+        height: 19
+      alignment: 9
+      pivot: {x: .463172078, y: .156916261}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_foot
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 3
+        width: 22
+        height: 9
+      alignment: 9
+      pivot: {x: .258942693, y: .585932434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
