@@ -13,6 +13,8 @@ TextureImporter:
     21300016: platform_5
     21300018: ladder_4
     21300020: platform_4
+    21300022: chunk_o_cheese
+    21300024: level_assets_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -161,6 +163,26 @@ TextureImporter:
         y: 560
         width: 405
         height: 104
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: chunk_o_cheese
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 577
+        width: 78
+        height: 65
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets_12
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 375
+        width: 104
+        height: 105
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
