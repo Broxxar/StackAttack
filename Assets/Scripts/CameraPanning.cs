@@ -56,7 +56,6 @@ public class CameraPanning : MonoBehaviour {
 			}
 
 			this.transform.position = newCameraPosition;
-			print (this.transform.position);
 		}
 		prevMousePos = Input.mousePosition;
 	}
