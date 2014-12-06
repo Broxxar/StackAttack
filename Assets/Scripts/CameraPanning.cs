@@ -4,6 +4,13 @@ using System.Collections;
 public class CameraPanning : MonoBehaviour {
 	bool panning = false;
 	Vector3 prevMousePos;
+
+	// limits for panning
+	int minX = -4;
+	int minY = -2;
+	int maxX = 4;
+	int maxY = 2;
+
 	void Awake ()
 	{
 	
@@ -30,7 +37,26 @@ public class CameraPanning : MonoBehaviour {
 			Vector3 deltaMousePos = Camera.main.ScreenToWorldPoint(prevMousePos) - Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			//Vector3 mousePos = Camera.main.ScreenToWorldPoint(deltaMousePos);
 
-			this.transform.position += deltaMousePos; //new Vector3 (mousePos.x, mousePos.y, this.transform.position.z); 
+			Vector3 newCameraPosition = this.transform.position + deltaMousePos; //new Vector3 (mousePos.x, mousePos.y, this.transform.position.z); 
+			if (newCameraPosition.x > maxX)
+			{
+				newCameraPosition.x = maxX;
+			}
+			else if (newCameraPosition.x < minX)
+			{
+				newCameraPosition.x = minX;
+			} 
+			if (newCameraPosition.y > maxY)
+			{
+				newCameraPosition.y = maxY;
+			}
+			else if (newCameraPosition.y < minY)
+			{
+				newCameraPosition.y = minY;
+			}
+
+			this.transform.position = newCameraPosition;
+			print (this.transform.position);
 		}
 		prevMousePos = Input.mousePosition;
 	}
