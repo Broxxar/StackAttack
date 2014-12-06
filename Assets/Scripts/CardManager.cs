@@ -7,6 +7,7 @@ public class CardManager : MonoBehaviour {
 
 
 	Stack<Card> CardStack = new Stack<Card>();
+	int sortOrderDelta = 10;
 
 	void Awake ()
 	{
@@ -14,7 +15,8 @@ public class CardManager : MonoBehaviour {
 		
 		
 		GetComponent<Clickable>().DownAction += OnDownAction;
-		GetComponent<Clickable>().UpAction += OnUpAction;
+		//GetComponent<Clickable>().UpAction += OnUpAction;
+		InputManager.Instance.GlobalUpAction += OnUpAction;
 	}
 	
 	void OnDownAction (Vector3 position)
@@ -35,13 +37,21 @@ public class CardManager : MonoBehaviour {
 	{
 		CardStack.Push(card);
 		//card.EnableAllColliders();
+		//card.AdjustSortOrder((CardStack.Count - 1) * sortOrderDelta);
+
 	}
 
 	public void RemoveFromStack()
 	{
 
-		Card card = CardStack.Pop();
-		//card.DisableAllColliders();
+		if (CardStack.Count > 0)
+		{
+		    Card card = CardStack.Pop();
+			card.GetComponent<Clickable>().DownAction += OnDownAction;
+		    //card.DisableAllColliders();
+			//card.AdjustSortOrder(-CardStack.Count * sortOrderDelta);
+
+		}
 	}
 
 
