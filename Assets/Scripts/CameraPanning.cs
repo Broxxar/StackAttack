@@ -16,7 +16,7 @@ public class CameraPanning : MonoBehaviour {
 	
 		
 		GetComponent<Clickable>().DownAction += OnDownAction;
-		GetComponent<Clickable>().UpAction += OnUpAction;
+		InputManager.Instance.GlobalUpAction += OnUpAction;
 	}
 	
 	void OnDownAction (Vector3 position)
