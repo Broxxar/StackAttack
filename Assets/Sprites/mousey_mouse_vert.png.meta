@@ -1,0 +1,113 @@
+fileFormatVersion: 2
+guid: 37ecc74272b9b5f48a818ed5dd24713e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: mouse_head_vert
+    21300002: mouse_fore_vert
+    21300004: mouse_body_vert
+    21300006: mouse_thigh_vert
+    21300008: mouse_thigh_vert_flip
+    21300010: mouse_fore_vert_flip
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: mouse_head_vert
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 74
+        width: 62
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_fore_vert
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 16
+        height: 30
+      alignment: 9
+      pivot: {x: .5, y: .200000003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_body_vert
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 85
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_thigh_vert
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 66
+        width: 26
+        height: 28
+      alignment: 9
+      pivot: {x: .660000026, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_thigh_vert_flip
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 38
+        width: 26
+        height: 29
+      alignment: 9
+      pivot: {x: .330000013, y: .300000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: mouse_fore_vert_flip
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 38
+        width: 16
+        height: 30
+      alignment: 9
+      pivot: {x: .5, y: .200000003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
