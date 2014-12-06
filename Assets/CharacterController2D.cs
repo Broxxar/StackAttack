@@ -6,6 +6,8 @@ public class CharacterController2D : MonoBehaviour {
 	Collider2D collider;
 	bool canClimb = false;
 	bool isGrounded = false;
+	bool ladderTop = false;
+	bool ladderBottom = false;
 	Vector2 ladderPos;
 	Vector2 walkSpeed = new Vector2 (10,0);
 	Vector2 climbSpeed = new Vector2(0,10);
@@ -17,14 +19,14 @@ public class CharacterController2D : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (canClimb == false && isGrounded == false) {
+		if (canClimb == false && isGrounded == false && ladderTop == false) {
 			body.isKinematic = false;		
 		}else{
 			body.isKinematic = true;
 		}
 
 
-		if(isGrounded){
+		if(isGrounded || !canClimb && ladderTop){
 			if(Input.GetKey(KeyCode.A)){
 				body.MovePosition(body.position - walkSpeed * Time.deltaTime);
 			}else if (Input.GetKey(KeyCode.D)){
@@ -40,6 +42,16 @@ public class CharacterController2D : MonoBehaviour {
 
 				body.MovePosition(new Vector2(ladderPos.x,body.position.y) - climbSpeed * Time.deltaTime);
 			}
+		}else if(ladderTop){
+			if (Input.GetKey(KeyCode.S)){
+				
+				body.MovePosition(new Vector2(ladderPos.x,body.position.y) - climbSpeed * Time.deltaTime);
+			}
+		}else if (ladderBottom){
+			if (Input.GetKey(KeyCode.W)){
+				body.MovePosition(new Vector2(ladderPos.x,body.position.y) + climbSpeed * Time.deltaTime);
+				canClimb = true;
+			}
 		}
 	}
 
@@ -47,49 +59,38 @@ public class CharacterController2D : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.CompareTag ("Ladder")) {
 			canClimb = true;
-		
 			ladderPos = other.transform.position;
 		}
-		//check that collisions on the bottom
+		if (other.CompareTag ("LadderTop")) {
+			ladderTop = true;
+		}
+		if (other.CompareTag ("LadderBottom")) {
+			ladderBottom = true;
+		}
+
 		if(other.CompareTag("Ground"))
 		{
-				isGrounded = true;
+			isGrounded = true;
+			canClimb = false;
 		}
 
 	}
 
 	void OnTriggerExit2D(Collider2D other){
 		if (other.CompareTag ("Ladder")) {
-				canClimb = false;
-				
+			isGrounded = true;
+			canClimb = false;
 		}
 		if (other.CompareTag("Ground")){
-				isGrounded = false;
+			isGrounded = false;
+		}
+		if (other.CompareTag("LadderTop")){
+			ladderTop = false;
+		}
+		if (other.CompareTag("LadderBottom")){
+			ladderBottom = false;
 		}
 	}
-
-//	//set grounded
-//	void OnCollisionEnter2D( Collision2D theCollision)
-//	{
-//		
-//		//check that collisions on the bottom
-//		if(theCollision.contacts.Length > 0)
-//		{
-//			ContactPoint2D contact = theCollision.contacts[0];
-//			if(Vector2.Dot(contact.normal, Vector2.up) > 0.5)
-//			{
-//				isGrounded = true;
-//			}
-//		}
-//		
-//	}
-//	
-//	void OnCollisionExit2D( Collision2D theCollision)
-//	{
-//		print ("exit");
-//		//isGrounded = false;
-//		
-//}
 
 
 }
