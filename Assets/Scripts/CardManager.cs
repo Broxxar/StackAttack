@@ -11,18 +11,31 @@ public class CardManager : MonoBehaviour {
 
 	void Awake ()
 	{
-		GetComponent<Clickable>().DownAction += OnDownAction;
+		InputManager.Instance.GlobalDownAction += OnDownAction;
 		InputManager.Instance.GlobalUpAction += OnUpAction;
 	}
 	
 	void OnDownAction (Vector3 position)
 	{
-		RemoveFromStack ();
+		SpriteRenderer temp = this.gameObject.GetComponent<SpriteRenderer> ();
+		print (gameObject.tag);
+		float right = temp.bounds.max.x;
+		float left = temp.bounds.min.x;
+		float top =temp.bounds.max.y;
+		float bottom = temp.bounds.min.y;
+		print (right+","+left+","+top+","+bottom);
+		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		print (mousePos);
+		if ((mousePos.x < right && mousePos.x > left) && (mousePos.y < top && mousePos.y > bottom)) {
+			print("remove");
+			RemoveFromStack ();
+		}
+
 	}
 	
 	void OnUpAction (Vector3 position)
 	{
-	//	drag = false;
+		//drag = false;
 	}
 
 

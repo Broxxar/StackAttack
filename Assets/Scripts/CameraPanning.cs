@@ -22,7 +22,7 @@ public class CameraPanning : MonoBehaviour {
 	void OnDownAction (Vector3 position)
 	{
 		
-		panning = true;
+		panning = false;
 		
 	}
 	

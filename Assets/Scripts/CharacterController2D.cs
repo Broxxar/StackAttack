@@ -88,17 +88,19 @@ public class CharacterController2D : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other){
 		if(other.CompareTag("Ground")){
-		
+			currentCollision = other;
 			isGrounded = true;
 			canClimb = false;
 			anim.SetBool("Climbing",false);
 			this.transform.localScale = new Vector3 (this.transform.localScale.x, 1, 1);
-			print (transform.localScale);
+
+		}if (other.CompareTag ("Ladder")) {
+			currentCollision = other;		
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
 
-		currentCollision = other;
+
 		if (other.CompareTag ("Ladder")) {
 			//needed for centering mouse
 
@@ -116,18 +118,17 @@ public class CharacterController2D : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D other){
-		if (other.CompareTag ("Ladder")) {
+		if (other.CompareTag ("Ground")) {
+			isGrounded = false;
+		}else if (other.CompareTag ("Ladder")) {
 			//isGrounded = true;
 			canClimb = false;
 			anim.SetBool("Climbing",false);
 			this.transform.localScale = new Vector3 (this.transform.localScale.x, 1, 1);
-			print (transform.localScale);
-		}
 
-		if (other.CompareTag("LadderTop")){
+		}else if (other.CompareTag("LadderTop")){
 			ladderTop = false;
-		}
-		if (other.CompareTag("LadderBottom")){
+		}else if (other.CompareTag("LadderBottom")){
 			ladderBottom = false;
 		}
 	}

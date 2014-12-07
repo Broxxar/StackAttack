@@ -14,6 +14,7 @@ public class CharController2D : MonoBehaviour {
 	Vector2 ladderPos;
 	Vector2 walkSpeed = new Vector2 (3,0);
 	Vector2 climbSpeed = new Vector2(0,3);
+	Collider2D currentCollision ;
 	
 	// Use this for initialization
 	void Start () {
@@ -27,63 +28,64 @@ public class CharController2D : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (fall||(!isGrounded&&!canClimb&&!ladderTop)) {
+		if ((currentCollision!=null && currentCollision.enabled == false)||(!isGrounded&&!canClimb&&!ladderTop)) {
 			isGrounded = false;
-			body.isKinematic = false;		
+			body.isKinematic = false;
 		}else{
 			body.isKinematic = true;
 		}
-
 		
 		
 		if(isGrounded || !canClimb && ladderTop){
 			
-			if(Input.GetKey(KeyCode.A)){
-				//anim.SetBool("Running", true);
-				//mouseTrans.localScale = new Vector3(-1,1,1);
+			if(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow)){
+				anim.SetBool("Running", true);
+				anim.SetBool ("Climbing", false);
+				mouseTrans.localScale = new Vector3(-1,1,1);
 				body.MovePosition(body.position - walkSpeed * Time.deltaTime);
-			}else if (Input.GetKey(KeyCode.D)){
-				//anim.SetBool("Running", true);
-				//mouseTrans.localScale = new Vector3(1,1,1);
+			}else if (Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow)){
+				anim.SetBool("Running", true);
+				anim.SetBool("Climbing",false);
+				mouseTrans.localScale = new Vector3(1,1,1);
 				body.MovePosition(body.position + walkSpeed * Time.deltaTime);
 			}else{
-				//anim.SetBool("Running", false);
+				anim.SetBool("Running", false);
 				
 			}
 			
 		}
 		if(canClimb){
 			//on ladder keep climbing
-			if(Input.GetKey(KeyCode.W)){
-				//anim.SetBool("Climbing", true);
-				//	anim.SetBool ("Running", false);
-				//anim.SetBool ("pushingButton",true);
-				//mouseTrans.localScale = new Vector3(1,1,1);
+			if(Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow)){
+				anim.SetBool("Climbing", true);
+				anim.SetBool ("Running", false);
+				anim.SetBool ("pushingButton",true);
+				mouseTrans.localScale = new Vector3(1,1,1);
 				isGrounded = false;
 				body.MovePosition(new Vector2(ladderPos.x,body.position.y) + climbSpeed * Time.deltaTime);
-			}else if (Input.GetKey(KeyCode.S)){
-				//anim.SetBool("Climbing", true);
-				//anim.SetBool ("pushingButton",true);
-				//mouseTrans.localScale = new Vector3(1,-1,1);
+			}else if (Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow)){
+				anim.SetBool("Climbing", true);
+				anim.SetBool ("pushingButton",true);
+				mouseTrans.localScale = new Vector3(1,-1,1);
 				body.MovePosition(new Vector2(ladderPos.x,body.position.y) - climbSpeed * Time.deltaTime);
 			}else{
-		//		anim.SetBool ("pushingButton",false);
+				anim.SetBool ("pushingButton",false);
 			}
 			//if top of ladder only climbdown
 		}else if(ladderTop){
-			if (Input.GetKey(KeyCode.S)){
+			if (Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow)){
 				canClimb = true;
-				//anim.SetBool("Climbing", true);
-				//mouseTrans.localScale = new Vector3(1,-1,1);
-				//anim.SetBool ("pushingButton",true);
+				anim.SetBool("Climbing", true);
+				mouseTrans.localScale = new Vector3(1,-1,1);
+				anim.SetBool ("pushingButton",true);
 				body.MovePosition(new Vector2(ladderPos.x,body.position.y) - climbSpeed * Time.deltaTime);
 			}
 			//if bottom of ladder only climb up
 		}else if (ladderBottom){
-			if (Input.GetKey(KeyCode.W)){
-				//anim.SetBool("Climbing", true);
-				//mouseTrans.localScale = new Vector3(1,1,1);
-				//anim.SetBool ("pushingButton",true);
+			if (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow)){
+				anim.SetBool("Climbing", true);
+				mouseTrans.localScale = new Vector3(1,1,1);
+				anim.SetBool ("pushingButton",true);
 				body.MovePosition(new Vector2(ladderPos.x,body.position.y) + climbSpeed * Time.deltaTime);
 				canClimb = true;
 			}
@@ -103,16 +105,20 @@ public class CharController2D : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other){
-		if(!other.CompareTag("Manager")){
+
 			bool touchingLevel = false;
 			if (other.CompareTag ("Ground")) {
 				touchingLevel = true;
 				isGrounded = true;
 				canClimb = false;
+				currentCollision = other;
+				anim.SetBool("Climbing",false);
+				mouseTrans.localScale = new Vector3(mouseTrans.localScale.x, 1, 1);
 			}else if (other.CompareTag("Ladder")) {
 				touchingLevel = true;
+				currentCollision = other;
 			} else if (other.CompareTag("LadderBottom")) {
-				//print ("bottom");
+				
 				ladderPos = other.transform.position;
 				touchingLevel = true;
 				ladderBottom = true;
@@ -122,8 +128,5 @@ public class CharController2D : MonoBehaviour {
 				ladderTop = true;
 			} 
 			fall = !touchingLevel;
-		}else{
-			isGrounded = false;
-		}
 	}
 }

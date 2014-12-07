@@ -25,6 +25,7 @@ public class Card : MonoBehaviour {
 		cm = FindObjectOfType (typeof(CardManager)) as CardManager;
 		cards = FindObjectsOfType (typeof(Card)) as Card[];
 		DisableAllColliders ();
+		collide.enabled = true;
 	}
 	void Awake (){
 		GetComponent<Clickable>().DownAction += OnDownAction;
@@ -86,6 +87,7 @@ public class Card : MonoBehaviour {
 	}
 
 	void OverlappingOnDesk (){
+		collide.enabled = true;
 		foreach (Card card in cards) {
 			if (collide.bounds.Intersects(card.collide.bounds) && card.drag==false) {
 				Vector3 newVector =  transform.position - card.transform.position;
@@ -105,7 +107,7 @@ public class Card : MonoBehaviour {
 		foreach(Collider2D colliders in childColliders){
 			colliders.enabled = false;
 		}
-		collide.enabled = true;
+		//collide.enabled = true;
 	}
 
 	bool ScaleToManager(){
