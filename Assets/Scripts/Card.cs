@@ -16,6 +16,7 @@ public class Card : MonoBehaviour {
 	public bool inStack = false;
 	public bool rotateFocus = false;
 	public Vector3 targetRotation;
+	float zTimes=1;
 	Card[] cards;
 
 	void Start () {
@@ -140,12 +141,16 @@ public class Card : MonoBehaviour {
 	}
 
 	void Rotate(){
-		if(targetRotation.z - transform.localEulerAngles.z < 2f){
+		if(Mathf.Abs(targetRotation.z - transform.localEulerAngles.z) < 2f){
 			rotateFocus=false;
 			transform.rotation = Quaternion.Euler(targetRotation);
+
+			for(int i = 0; i< childColliders.Length;i++){
+				if(childColliders[i].tag == "LadderTop"){ childColliders[i].tag = "LadderBottom"; }
+				else if(childColliders[i].tag == "LadderBottom"){ childColliders[i].tag = "LadderTop"; }
+			}
 		}
 		else{
-			print ("print");
 			transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, targetRotation, 10f * Time.deltaTime); 
 			//transform.rotation= Quaternion.Lerp(transform.rotation, new Quaternion(0f,0f,targetRotation,1), Time.deltaTime*0.1f);
 		}
@@ -154,5 +159,9 @@ public class Card : MonoBehaviour {
 	public void Focus 	()					{ drag = true;	}
 	void OnDownAction 	(Vector3 position)	{ drag = true;	}
 	void OnUpAction 	(Vector3 position)	{ drag = false;	}
-	void OnRightUpAction 	(Vector3 position)	{ rotateFocus = true; targetRotation = transform.eulerAngles + 180f * Vector3.forward;	}
+	void OnRightUpAction 	(Vector3 position)	{ 
+		rotateFocus = true; 
+		targetRotation = (180f*(zTimes%2)) * Vector3.forward;	
+		zTimes++;
+	}
 }
