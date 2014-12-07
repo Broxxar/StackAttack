@@ -11,15 +11,20 @@ public class Card : MonoBehaviour {
 	public Component[] childRenderers;
 	bool drag = false;
 	bool oldDrag = false;
-	private SpriteRenderer sprite;
+	private Collider2D collide;
+	private CardManager cm;
+	public bool inStack = false;
 	Card[] cards;
 
 	void Start () {
 		startingSize = transform.localScale;
-		sprite = GetComponent<SpriteRenderer>();
-		childColliders = GetComponentsInChildren<BoxCollider2D> ();
+		collide = GetComponent<Collider2D> ();
+		childColliders = GetComponentsInChildren<Collider2D> ();
 		childRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+		cm = FindObjectOfType (typeof(CardManager)) as CardManager;
 		cards = FindObjectsOfType (typeof(Card)) as Card[];
+		DisableAllColliders ();
 	}
 	void Awake (){
 		GetComponent<Clickable>().DownAction += OnDownAction;
@@ -29,13 +34,11 @@ public class Card : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (drag == true && oldDrag != drag) {
-			sprite.sortingLayerID = 1;
 			foreach(SpriteRenderer sprites in childRenderers){
 				sprites.sortingLayerID = 1;
 			}
 		}
 		else if(drag==false && oldDrag != drag) {
-			sprite.sortingLayerID = 0;
 			foreach(SpriteRenderer sprites in childRenderers){
 				sprites.sortingLayerID = 0;
 			}
@@ -46,7 +49,10 @@ public class Card : MonoBehaviour {
 			SmoothScaleUp();
 		}
 		else if(!drag && OnGame()) {
-			AddToGame();
+			if(ScaleToManager() && !inStack){ 
+				inStack = true;
+				cm.AddToStack(this); 
+			}
 		}
 		else if(!drag && !OnGame()){
 			SmoothScaleDown();
@@ -68,27 +74,61 @@ public class Card : MonoBehaviour {
 	}
 
 	bool OnGame(){
-		return false;
-	}
-	void AddToGame (){
-		foreach(BoxCollider2D colliders in childColliders){
-			colliders.isTrigger = true;
+		Collider2D temp = cm.GetComponent<Collider2D> ();
+		float right = temp.bounds.max.x;
+		float left = temp.bounds.min.x;
+		float top =temp.bounds.max.y;
+		float bottom = temp.bounds.min.y;
+		if ((transform.position.x < right && transform.position.x > left) && (transform.position.y < top && transform.position.y > bottom)) {
+			return true;
 		}
+		else{return false;}
 	}
 
 	void OverlappingOnDesk (){
 		foreach (Card card in cards) {
-			if (renderer.bounds.Intersects(card.renderer.bounds) && card.drag==false) {
+			if (collide.bounds.Intersects(card.collide.bounds) && card.drag==false) {
 				Vector3 newVector =  transform.position - card.transform.position;
 				transform.position += newVector * Time.deltaTime;
 			}
 		}
 	}
 
-	void OnDownAction (Vector3 position){
-		drag = true;
+	public void EnableAllColliders(){
+		foreach(Collider2D colliders in childColliders){
+			colliders.enabled = true;
+		}
+		collide.enabled = false;
 	}
-	void OnUpAction (Vector3 position){
-		drag = false;
+
+	public void DisableAllColliders(){
+		foreach(Collider2D colliders in childColliders){
+			colliders.enabled = false;
+		}
+		collide.enabled = true;
 	}
+
+	bool ScaleToManager(){
+		if((Vector3.Distance(transform.position,cm.transform.position)<0.1f) &&
+		   (cm.transform.localScale.x - transform.localScale.x < 1f)){
+			transform.position=cm.transform.position;
+			transform.localScale = cm.transform.localScale;
+			return true;
+		}
+		else{
+			Vector3 newVector =  cm.transform.position - transform.position;
+			transform.position = Vector3.MoveTowards(transform.position, newVector,10*Time.deltaTime);
+			transform.localScale = Vector3.Lerp(transform.localScale,Vector3.one, Time.deltaTime*scaleUpSpeed);
+			return false;
+		}
+	}
+
+	public void AdjustSortOrder(int howMuch){
+		foreach(SpriteRenderer sprites in childRenderers){
+			sprites.sortingOrder += howMuch;
+		}
+	}
+	public void Focus 	()					{ drag = true;	}
+	void OnDownAction 	(Vector3 position)	{ drag = true;	}
+	void OnUpAction 	(Vector3 position)	{ drag = false;	}
 }
