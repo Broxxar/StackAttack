@@ -43,7 +43,17 @@ public class CameraPanning : MonoBehaviour {
 	{
 		panning = false;
 	}
-	
+
+	public void LoadScene(string sceneName)
+	{
+		if (sceneName == "")
+		{
+			sceneName = Application.loadedLevelName;
+		}
+		Application.LoadLevel (sceneName);
+	}
+
+
 	void Update(){
 		if (panning == true) {
 
