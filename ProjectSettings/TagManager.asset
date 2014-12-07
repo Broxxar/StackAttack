@@ -50,3 +50,7 @@ TagManager:
     userID: 1
     uniqueID: 1463482781
     locked: 0
+  - name: Mouse
+    userID: 2
+    uniqueID: 2590356585
+    locked: 0
