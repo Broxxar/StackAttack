@@ -7,6 +7,8 @@ public class InputManager : MonoBehaviour
 	
 	public event MouseEventHandler GlobalDownAction = delegate {};
 	public event MouseEventHandler GlobalUpAction = delegate {};
+	public event MouseEventHandler GlobalRightDownAction = delegate {};
+	public event MouseEventHandler GlobalRightUpAction = delegate {};
 	
 	public static InputManager Instance
 	{
@@ -69,5 +71,47 @@ public class InputManager : MonoBehaviour
 				}
 			}
 		}
+
+		else if (Input.GetMouseButtonDown(1))
+		{
+			Collider2D collider = Physics2D.OverlapPoint(MouseWorldPosition);
+			GlobalRightDownAction(MouseWorldPosition);
+			
+			if (collider != null)
+			{
+				Clickable clickable = collider.GetComponent<Clickable>();	
+				if (clickable != null)
+				{
+					clickable.FireEvent(MouseEventType.RightDown, MouseWorldPosition);
+				}
+			}else{
+				Clickable clickable = Camera.main.GetComponent<Clickable>();
+				if (clickable != null)
+				{
+					clickable.FireEvent(MouseEventType.RightDown, MouseWorldPosition);
+				}
+			}
+		}
+		else if (Input.GetMouseButtonUp(1))
+		{
+			Collider2D collider = Physics2D.OverlapPoint(MouseWorldPosition);
+			GlobalRightUpAction(MouseWorldPosition);
+			
+			if (collider != null)
+			{
+				Clickable clickable = collider.GetComponent<Clickable>();	
+				if (clickable != null)
+				{
+					clickable.FireEvent(MouseEventType.RightUp, MouseWorldPosition);
+				}
+			}else{
+				Clickable clickable = Camera.main.GetComponent<Clickable>();
+				if (clickable != null)
+				{
+					clickable.FireEvent(MouseEventType.RightUp, MouseWorldPosition);
+				}
+			}
+		}
+
 	}
 }
