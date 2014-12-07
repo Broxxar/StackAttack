@@ -95,6 +95,15 @@ public class CharController2D : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.CompareTag ("Ladder")) {
+			body.isKinematic = true;
+		}if(other.CompareTag("Ground")){
+			body.isKinematic = true;
+		}
+
+	}
+
 	void OnTriggerExit2D(Collider2D other){
 		if (other.CompareTag ("Ladder")) {
 			canClimb = false;
