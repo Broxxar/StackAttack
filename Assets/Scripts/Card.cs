@@ -74,7 +74,7 @@ public class Card : MonoBehaviour {
 	}
 
 	bool OnGame(){
-		Collider2D temp = cm.GetComponent<Collider2D> ();
+		SpriteRenderer temp = cm.GetComponent<SpriteRenderer> ();
 		float right = temp.bounds.max.x;
 		float left = temp.bounds.min.x;
 		float top =temp.bounds.max.y;
