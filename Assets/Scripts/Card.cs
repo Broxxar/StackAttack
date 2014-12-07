@@ -14,6 +14,8 @@ public class Card : MonoBehaviour {
 	private Collider2D collide;
 	private CardManager cm;
 	public bool inStack = false;
+	public bool rotateFocus = false;
+	public Vector3 targetRotation;
 	Card[] cards;
 
 	void Start () {
@@ -30,10 +32,16 @@ public class Card : MonoBehaviour {
 	void Awake (){
 		GetComponent<Clickable>().DownAction += OnDownAction;
 		InputManager.Instance.GlobalUpAction += OnUpAction;
+
+		GetComponent<Clickable>().RightUpAction += OnRightUpAction;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (rotateFocus) {
+			Rotate();
+		}
+
 		if (drag == true && oldDrag != drag) {
 			foreach(SpriteRenderer sprites in childRenderers){
 				sprites.sortingLayerID = 1;
@@ -130,7 +138,21 @@ public class Card : MonoBehaviour {
 			sprites.sortingOrder += howMuch;
 		}
 	}
+
+	void Rotate(){
+		if(targetRotation.z - transform.localEulerAngles.z < 2f){
+			rotateFocus=false;
+			transform.rotation = Quaternion.Euler(targetRotation);
+		}
+		else{
+			print ("print");
+			transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, targetRotation, 10f * Time.deltaTime); 
+			//transform.rotation= Quaternion.Lerp(transform.rotation, new Quaternion(0f,0f,targetRotation,1), Time.deltaTime*0.1f);
+		}
+	}
+
 	public void Focus 	()					{ drag = true;	}
 	void OnDownAction 	(Vector3 position)	{ drag = true;	}
 	void OnUpAction 	(Vector3 position)	{ drag = false;	}
+	void OnRightUpAction 	(Vector3 position)	{ rotateFocus = true; targetRotation = transform.eulerAngles + 180f * Vector3.forward;	}
 }

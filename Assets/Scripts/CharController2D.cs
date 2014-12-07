@@ -30,6 +30,9 @@ public class CharController2D : MonoBehaviour {
 	void Update () {
 		if ((currentCollision!=null && currentCollision.enabled == false)||(!isGrounded&&!canClimb&&!ladderTop)) {
 			isGrounded = false;
+			canClimb = false;
+			ladderTop = false;
+			ladderBottom = false;
 			body.isKinematic = false;
 		}else{
 			body.isKinematic = true;
@@ -92,9 +95,19 @@ public class CharController2D : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D other){
+		if (other.CompareTag ("Ladder")) {
+			body.isKinematic = false;
+		}if(other.CompareTag("Ground")){
+			body.isKinematic = false;
+		}
+
+	}
+
 	void OnTriggerExit2D(Collider2D other){
 		if (other.CompareTag ("Ladder")) {
 			canClimb = false;
+			anim.SetBool("Climbing",false);
 		}else if(other.CompareTag ("LadderTop")) {
 			ladderTop = false;
 		}else if(other.CompareTag ("LadderBottom")) {
@@ -106,27 +119,26 @@ public class CharController2D : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other){
 
-			bool touchingLevel = false;
+
 			if (other.CompareTag ("Ground")) {
-				touchingLevel = true;
+				
 				isGrounded = true;
 				canClimb = false;
+			 
 				currentCollision = other;
 				anim.SetBool("Climbing",false);
+				anim.SetBool("Running", true);
 				mouseTrans.localScale = new Vector3(mouseTrans.localScale.x, 1, 1);
 			}else if (other.CompareTag("Ladder")) {
-				touchingLevel = true;
+				
 				currentCollision = other;
 			} else if (other.CompareTag("LadderBottom")) {
-				
 				ladderPos = other.transform.position;
-				touchingLevel = true;
 				ladderBottom = true;
 			} else if (other.CompareTag("LadderTop")) {
 				ladderPos = other.transform.position;
-				touchingLevel = true;
 				ladderTop = true;
 			} 
-			fall = !touchingLevel;
+
 	}
 }
