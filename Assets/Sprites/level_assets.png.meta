@@ -13,7 +13,7 @@ TextureImporter:
     21300016: platform_5
     21300018: ladder_4
     21300020: platform_4
-    21300022: chunk_o_cheese
+    21300022: dog_bone
     21300024: door_open
     21300026: door_closed
   serializedVersion: 2
@@ -167,13 +167,13 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: chunk_o_cheese
+    - name: dog_bone
       rect:
         serializedVersion: 2
-        x: 435
-        y: 577
-        width: 78
-        height: 65
+        x: 451
+        y: 580
+        width: 52
+        height: 54
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
