@@ -1441,7 +1441,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1640,6 +1640,10 @@ Prefab:
     - target: {fileID: 400000, guid: 3a3a122afafe05048ae94798d374b41f, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 3a3a122afafe05048ae94798d374b41f, type: 2}
+      propertyPath: orthographic size
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3a3a122afafe05048ae94798d374b41f, type: 2}
@@ -1966,7 +1970,7 @@ GameObject:
   - 114: {fileID: 897354864}
   - 61: {fileID: 897354863}
   - 212: {fileID: 897354862}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Card1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4207,7 +4211,7 @@ GameObject:
   - 114: {fileID: 1581797930}
   - 61: {fileID: 1581797929}
   - 212: {fileID: 1581797933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Card1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5105,7 +5109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1897271233
 Transform:
   m_ObjectHideFlags: 0
@@ -5319,7 +5323,7 @@ GameObject:
   - 114: {fileID: 1945786909}
   - 61: {fileID: 1945786908}
   - 212: {fileID: 1945786907}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Card1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

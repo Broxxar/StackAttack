@@ -46,11 +46,13 @@ public class Card : MonoBehaviour
 		}
 
 		if (drag == true && oldDrag != drag) {
+			collide.enabled = false;
 			foreach(SpriteRenderer sprites in childRenderers){
 				sprites.sortingLayerID = 1;
 			}
 		}
 		else if(drag==false && oldDrag != drag) {
+			collide.enabled = true;
 			foreach(SpriteRenderer sprites in childRenderers){
 				sprites.sortingLayerID = 0;
 			}
@@ -59,18 +61,21 @@ public class Card : MonoBehaviour
 		if (drag == true) {	
 			SnapToCenter (); 
 			SmoothScaleUp();
+
 		}
 		else if(!drag && OnGame()) {
 			if(ScaleToManager() && !inStack){ 
 				inStack = true;
 				cm.AddToStack(this); 
 			}
+
 		}
 		else if(!drag && !OnGame()){
 			SmoothScaleDown();
 			OverlappingOnDesk();
 		}
 		oldDrag = drag;
+	
 	}
 
 	void SnapToCenter() {
@@ -98,12 +103,15 @@ public class Card : MonoBehaviour
 	}
 
 	void OverlappingOnDesk (){
-		collide.enabled = true;
 		foreach (Card card in cards) {
 			if (collide.bounds.Intersects(card.collide.bounds) && card.drag==false) {
 				Vector3 newVector =  transform.position - card.transform.position;
 				transform.position += newVector * Time.deltaTime;
 			}
+		}
+		if (collide.bounds.Intersects(cm.renderer.bounds)) {
+			Vector3 newVector =  transform.position - cm.transform.position;
+			transform.position += newVector * Time.deltaTime;
 		}
 	}
 
@@ -118,6 +126,7 @@ public class Card : MonoBehaviour
 		foreach(Collider2D colliders in childColliders){
 			colliders.enabled = false;
 		}
+		collide.enabled = true;
 	}
 
 	bool ScaleToManager(){
