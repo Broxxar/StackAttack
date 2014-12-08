@@ -7,3 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/CardManagerTest.unity
+  - enabled: 1
+    path: Assets/Scenes/MenuScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
