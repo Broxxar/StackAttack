@@ -18,7 +18,7 @@ public class Card : MonoBehaviour
 	public bool inStack = false;
 	public bool rotateFocus = false;
 	public Vector3 targetRotation;
-	float zTimes = 1;
+	public float zTimes = 0;
 	Card[] cards;
 
 	void Awake (){
@@ -38,6 +38,8 @@ public class Card : MonoBehaviour
 		cards = FindObjectsOfType (typeof(Card)) as Card[];
 		DisableAllColliders ();
 		collide.enabled = true;
+
+		zTimes = (transform.localEulerAngles.z / 180f) + 1;
 	}
 
 	void Update () {
@@ -53,8 +55,15 @@ public class Card : MonoBehaviour
 		}
 		else if(drag==false && oldDrag != drag) {
 			collide.enabled = true;
-			foreach(SpriteRenderer sprites in childRenderers){
-				sprites.sortingLayerID = 0;
+			if(OnGame()){
+				foreach(SpriteRenderer sprites in childRenderers){
+					sprites.sortingLayerID = 3;
+				}
+			}
+			else{
+				foreach(SpriteRenderer sprites in childRenderers){
+					sprites.sortingLayerID = 0;
+				}
 			}
 		}
 
@@ -67,6 +76,9 @@ public class Card : MonoBehaviour
 			if(ScaleToManager() && !inStack){ 
 				inStack = true;
 				cm.AddToStack(this); 
+				foreach(SpriteRenderer sprites in childRenderers){
+					sprites.sortingLayerID = 0;
+				}
 			}
 
 		}
@@ -117,6 +129,10 @@ public class Card : MonoBehaviour
 
 	public void EnableAllColliders(){
 		foreach(Collider2D colliders in childColliders){
+			if(colliders.gameObject.CompareTag("Ladder")){
+				Vector3 ladderRotate = new Vector3(0f,0f,(colliders.gameObject.transform.rotation.z/180f)%2f);
+				colliders.gameObject.transform.rotation = Quaternion.Euler(ladderRotate);
+			}
 			colliders.enabled = true;
 		}
 		collide.enabled = false;

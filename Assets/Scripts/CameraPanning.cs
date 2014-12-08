@@ -8,7 +8,7 @@ public class CameraPanning : MonoBehaviour
 	
 	float zoomMaxSpeed = 20.0f;
 	float zoomSmoothingFactor = 10.0f;
-	float minZoom = 8.0f;
+	float minZoom = 5.5f;
 	float maxZoom = 16.0f;
 	float zoomVelocity = 0;
 	
