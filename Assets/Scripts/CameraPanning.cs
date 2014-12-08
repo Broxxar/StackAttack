@@ -28,7 +28,6 @@ public class CameraPanning : MonoBehaviour
 		Gizmos.DrawLine(cameraBounds.min, cameraBounds.min + Vector2.up * cameraBounds.height);
 		Gizmos.DrawLine(cameraBounds.max, cameraBounds.max - Vector2.right * cameraBounds.width);
 		Gizmos.DrawLine(cameraBounds.max, cameraBounds.max - Vector2.up * cameraBounds.height);
-		
 	}
 	
 	void OnDownAction (Vector3 position)
