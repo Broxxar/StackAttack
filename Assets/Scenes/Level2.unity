@@ -1116,6 +1116,10 @@ Prefab:
       propertyPath: CheeseGoal
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
+      propertyPath: NextLevelName
+      value: Level3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
   m_RootGameObject: {fileID: 1588695172}
@@ -4243,7 +4247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenSprite: {fileID: 21300024, guid: df848a1ec7f9d88439fc6d47a2335cf3, type: 3}
   CheeseGoal: 1
-  NextLevelName: Level2
+  NextLevelName: Level3
 --- !u!212 &1588695176
 SpriteRenderer:
   m_ObjectHideFlags: 0

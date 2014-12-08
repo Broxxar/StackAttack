@@ -1189,7 +1189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenSprite: {fileID: 21300024, guid: df848a1ec7f9d88439fc6d47a2335cf3, type: 3}
   CheeseGoal: 0
-  NextLevelName: Level2
+  NextLevelName: Level3
 --- !u!212 &75649610
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3662,6 +3662,10 @@ Prefab:
       propertyPath: CheeseGoal
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
+      propertyPath: NextLevelName
+      value: Level4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
   m_RootGameObject: {fileID: 1414809435}
@@ -4042,6 +4046,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
       propertyPath: CheeseGoal
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
+      propertyPath: NextLevelName
+      value: Level3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
@@ -6507,7 +6515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenSprite: {fileID: 21300024, guid: df848a1ec7f9d88439fc6d47a2335cf3, type: 3}
   CheeseGoal: 0
-  NextLevelName: Level2
+  NextLevelName: Level5
 --- !u!212 &687860394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6755,7 +6763,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 943614796}
   - 212: {fileID: 943614798}
-  - 60: {fileID: 943614797}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Cheese
@@ -6775,32 +6782,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1077036526}
   m_RootOrder: 4
---- !u!60 &943614797
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6000000, guid: b9f1d048754ac5245a8d23d77b9ad816,
-    type: 2}
-  m_PrefabInternal: {fileID: 1120890462}
-  m_GameObject: {fileID: 943614795}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Poly:
-    m_Paths:
-    - - {x: .389999986, y: .0949999988}
-      - {x: .349999994, y: .155000001}
-      - {x: .189999998, y: .324999988}
-      - {x: .119999997, y: .324999988}
-      - {x: -.0700000003, y: .224999994}
-      - {x: -.330000013, y: .0850000009}
-      - {x: -.389999986, y: .0549999997}
-      - {x: -.389999986, y: -.0949999988}
-      - {x: -.360000014, y: -.254999995}
-      - {x: -.280000001, y: -.324999988}
-      - {x: .0900000036, y: -.324999988}
-      - {x: .310000002, y: -.305000007}
-      - {x: .360000014, y: -.264999986}
-      - {x: .389999986, y: -.104999997}
 --- !u!212 &943614798
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6964,6 +6945,10 @@ Prefab:
     - target: {fileID: 400002, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
+      propertyPath: NextLevelName
+      value: Level2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
@@ -7202,7 +7187,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1290764191}
   - 212: {fileID: 1290764193}
-  - 60: {fileID: 1290764192}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Cheese
@@ -7222,32 +7206,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 772174779}
   m_RootOrder: 6
---- !u!60 &1290764192
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6000002, guid: b9f1d048754ac5245a8d23d77b9ad816,
-    type: 2}
-  m_PrefabInternal: {fileID: 1120890462}
-  m_GameObject: {fileID: 1290764190}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Poly:
-    m_Paths:
-    - - {x: .389999986, y: .0949999988}
-      - {x: .349999994, y: .155000001}
-      - {x: .189999998, y: .324999988}
-      - {x: .119999997, y: .324999988}
-      - {x: -.0700000003, y: .224999994}
-      - {x: -.330000013, y: .0850000009}
-      - {x: -.389999986, y: .0549999997}
-      - {x: -.389999986, y: -.0949999988}
-      - {x: -.360000014, y: -.254999995}
-      - {x: -.280000001, y: -.324999988}
-      - {x: .0900000036, y: -.324999988}
-      - {x: .310000002, y: -.305000007}
-      - {x: .360000014, y: -.264999986}
-      - {x: .389999986, y: -.104999997}
 --- !u!212 &1290764193
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7354,7 +7312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenSprite: {fileID: 21300024, guid: df848a1ec7f9d88439fc6d47a2335cf3, type: 3}
   CheeseGoal: 0
-  NextLevelName: Level2
+  NextLevelName: Level4
 --- !u!212 &1414809437
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8251,6 +8209,10 @@ Prefab:
     - target: {fileID: 11400000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
       propertyPath: CheeseGoal
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
+      propertyPath: NextLevelName
+      value: Level5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23f46bc5aa600214399e4fae4587bffd, type: 2}
