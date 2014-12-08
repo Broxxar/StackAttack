@@ -7,28 +7,40 @@ public class Door : MonoBehaviour
 	public int CheeseGoal = 0;
 	public string NextLevelName;
 
-	CharController2D player;
+	CharacterController2D player;
 	SpriteRenderer sr;
 	ParticleSystem poof;
+	bool open;
 
 	void Start ()
 	{
-		player = FindObjectOfType (typeof(CharController2D)) as CharController2D;
+		player = FindObjectOfType (typeof(CharacterController2D)) as CharacterController2D;
 		sr = GetComponent<SpriteRenderer>();
 		poof = GetComponent<ParticleSystem>();
+		
+		if (CheeseGoal == 0)
+		{
+			open = true;
+			sr.sprite = OpenSprite;
+		}
 	}
 	
 	void Open ()
 	{
+		open = true;
 		sr.sprite = OpenSprite;
 		poof.Play();
 	}	
 	
 	void OnTriggerStay2D ()
 	{
-		if (Input.GetKeyDown (KeyCode.Space) && 0 == CheeseGoal)
-		{	
+		if (Input.GetKeyDown (KeyCode.Space) && open)
 			Application.LoadLevel (NextLevelName);
-		}
+	}
+	
+	void Update ()
+	{
+		if (player.numCheese >= CheeseGoal && !open)
+			Open();	
 	}
 }
