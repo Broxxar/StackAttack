@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Card : MonoBehaviour {
-	public float scale = 1.5f;
+public class Card : MonoBehaviour
+{
 	public float moveSpeed = 20f;
 	public float scaleUpSpeed = 6f;
 	public float scaleDownSpeed = 12f;
 	public Vector3 startingSize;
 	public Component[] childColliders;
 	public Component[] childRenderers;
+	
+	float pickupScale = 1.2f;
 	bool drag = false;
 	bool oldDrag = false;
 	private Collider2D collide;
@@ -16,7 +18,7 @@ public class Card : MonoBehaviour {
 	public bool inStack = false;
 	public bool rotateFocus = false;
 	public Vector3 targetRotation;
-	float zTimes=1;
+	float zTimes = 1;
 	Card[] cards;
 
 	void Start () {
@@ -77,7 +79,7 @@ public class Card : MonoBehaviour {
 	}
 	
 	void SmoothScaleUp() {
-		transform.localScale = Vector3.Lerp(transform.localScale,startingSize*scale, Time.deltaTime*scaleUpSpeed);
+		transform.localScale = Vector3.Lerp(transform.localScale,startingSize*pickupScale, Time.deltaTime*scaleUpSpeed);
 	}
 	void SmoothScaleDown() {
 		transform.localScale = Vector3.Lerp(transform.localScale,startingSize, Time.deltaTime*scaleDownSpeed);
