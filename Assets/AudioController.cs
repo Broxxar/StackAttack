@@ -11,6 +11,7 @@ public class AudioController : MonoBehaviour
 			Destroy(gameObject);
 		else
 		{
+			DontDestroyOnLoad(gameObject);
 			_instance = this;
 			audio.Play();
 		}
