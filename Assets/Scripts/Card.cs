@@ -52,6 +52,7 @@ public class Card : MonoBehaviour
 			}
 		}
 		else if(drag==false && oldDrag != drag) {
+			collide.enabled = true;
 			foreach(SpriteRenderer sprites in childRenderers){
 				sprites.sortingLayerID = 0;
 			}
@@ -72,7 +73,6 @@ public class Card : MonoBehaviour
 		else if(!drag && !OnGame()){
 			SmoothScaleDown();
 			OverlappingOnDesk();
-			collide.enabled = true;
 		}
 		oldDrag = drag;
 	
@@ -103,7 +103,6 @@ public class Card : MonoBehaviour
 	}
 
 	void OverlappingOnDesk (){
-
 		foreach (Card card in cards) {
 			if (collide.bounds.Intersects(card.collide.bounds) && card.drag==false) {
 				Vector3 newVector =  transform.position - card.transform.position;
@@ -127,6 +126,7 @@ public class Card : MonoBehaviour
 		foreach(Collider2D colliders in childColliders){
 			colliders.enabled = false;
 		}
+		collide.enabled = true;
 	}
 
 	bool ScaleToManager(){
