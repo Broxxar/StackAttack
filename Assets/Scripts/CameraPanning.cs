@@ -8,16 +8,27 @@ public class CameraPanning : MonoBehaviour
 	
 	float zoomMaxSpeed = 20.0f;
 	float zoomSmoothingFactor = 10.0f;
-	float minZoom = 6.0f;
-	float maxZoom = 12.0f;
+	float minZoom = 8.0f;
+	float maxZoom = 16.0f;
 	float zoomVelocity = 0;
 	
-	Rect cameraBounds = new Rect(-10, 10, 10, 10);
+	Rect cameraBounds = new Rect(-30, 20, 60, -40);
 
 	void Awake ()
 	{
 		GetComponent<Clickable>().DownAction += OnDownAction;
 		InputManager.Instance.GlobalUpAction += OnUpAction;
+	}
+	
+	void OnDrawGizmos ()
+	{
+		Gizmos.color = Color.cyan;
+	
+		Gizmos.DrawLine(cameraBounds.min, cameraBounds.min + Vector2.right * cameraBounds.width);
+		Gizmos.DrawLine(cameraBounds.min, cameraBounds.min + Vector2.up * cameraBounds.height);
+		Gizmos.DrawLine(cameraBounds.max, cameraBounds.max - Vector2.right * cameraBounds.width);
+		Gizmos.DrawLine(cameraBounds.max, cameraBounds.max - Vector2.up * cameraBounds.height);
+		
 	}
 	
 	void OnDownAction (Vector3 position)
@@ -52,6 +63,21 @@ public class CameraPanning : MonoBehaviour
 		
 		//bounds check and Lerp into correct position in bounds
 		
-	//	if (!cameraBounds.Contains(transform.position + camera.rect
+		Vector3 cameraTopLeftCorner = new Vector3(transform.position.x - camera.orthographicSize * camera.aspect, transform.position.y + camera.orthographicSize);
+		Vector3 cameraTopRightCorner = new Vector3(transform.position.x + camera.orthographicSize * camera.aspect, transform.position.y - camera.orthographicSize);
+		
+		Vector3 correction = Vector3.zero;
+		
+		if (cameraTopLeftCorner.x < cameraBounds.min.x)
+			correction.x += cameraBounds.min.x - cameraTopLeftCorner.x;
+		if (cameraTopLeftCorner.y > cameraBounds.min.y)
+			correction.y += cameraBounds.min.y - cameraTopLeftCorner.y;
+		
+		if (cameraTopRightCorner.x > cameraBounds.max.x)
+			correction.x += cameraBounds.max.x - cameraTopRightCorner.x;
+		if (cameraTopRightCorner.y < cameraBounds.max.y)
+			correction.y += cameraBounds.max.y - cameraTopRightCorner.y;
+			
+		transform.Translate(correction);
 	}
 }
