@@ -93,6 +93,7 @@ public class CharacterController2D : MonoBehaviour {
 			mouseVertical.gameObject.SetActive( false);
 			mouseHorizontal.gameObject.SetActive(true);
 			gameObject.rigidbody2D.gravityScale = 1;
+			gameObject.rigidbody2D.velocity = new Vector2(0,0);
 			gameObject.layer = 0;
 			ladder = null;
 		}
