@@ -21,6 +21,13 @@ public class Card : MonoBehaviour
 	float zTimes = 1;
 	Card[] cards;
 
+	void Awake (){
+		GetComponent<Clickable>().DownAction += OnDownAction;
+		InputManager.Instance.GlobalUpAction += OnUpAction;
+		
+		GetComponent<Clickable>().RightUpAction += OnRightUpAction;
+	}
+	
 	void Start () {
 		startingSize = transform.localScale;
 		collide = GetComponent<Collider2D> ();
@@ -32,14 +39,7 @@ public class Card : MonoBehaviour
 		DisableAllColliders ();
 		collide.enabled = true;
 	}
-	void Awake (){
-		GetComponent<Clickable>().DownAction += OnDownAction;
-		InputManager.Instance.GlobalUpAction += OnUpAction;
 
-		GetComponent<Clickable>().RightUpAction += OnRightUpAction;
-	}
-	
-	// Update is called once per frame
 	void Update () {
 		if (rotateFocus) {
 			Rotate();
@@ -118,7 +118,6 @@ public class Card : MonoBehaviour
 		foreach(Collider2D colliders in childColliders){
 			colliders.enabled = false;
 		}
-		//collide.enabled = true;
 	}
 
 	bool ScaleToManager(){
@@ -143,25 +142,23 @@ public class Card : MonoBehaviour
 	}
 
 	void Rotate(){
-		if(Mathf.Abs(targetRotation.z - transform.localEulerAngles.z) < 2f){
+		if(Mathf.Abs(targetRotation.z - transform.localEulerAngles.z) < 2f)
+		{
 			rotateFocus=false;
 			transform.rotation = Quaternion.Euler(targetRotation);
-
-			for(int i = 0; i< childColliders.Length;i++){
-				if(childColliders[i].tag == "LadderTop"){ childColliders[i].tag = "LadderBottom"; }
-				else if(childColliders[i].tag == "LadderBottom"){ childColliders[i].tag = "LadderTop"; }
-			}
 		}
-		else{
+		else
+		{
 			transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, targetRotation, 10f * Time.deltaTime); 
-			//transform.rotation= Quaternion.Lerp(transform.rotation, new Quaternion(0f,0f,targetRotation,1), Time.deltaTime*0.1f);
 		}
 	}
 
 	public void Focus 	()					{ drag = true;	}
 	void OnDownAction 	(Vector3 position)	{ drag = true;	}
-	void OnUpAction 	(Vector3 position)	{ drag = false;	}
-	void OnRightUpAction 	(Vector3 position)	{ 
+	void OnUpAction (Vector3 position) { drag = false;	}
+	
+	void OnRightUpAction 	(Vector3 position)
+	{ 
 		rotateFocus = true; 
 		targetRotation = (180f*(zTimes%2)) * Vector3.forward;	
 		zTimes++;
