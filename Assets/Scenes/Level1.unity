@@ -459,7 +459,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 118920491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.6000004, y: 7.19999981, z: 0}
+  m_LocalPosition: {x: 16.5, y: 7.19999981, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 906805226}
@@ -1235,7 +1235,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 564358726}
   - 212: {fileID: 564358728}
-  - 60: {fileID: 564358727}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Cheese
@@ -1255,32 +1254,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 60495021}
   m_RootOrder: 4
---- !u!60 &564358727
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6000000, guid: b9f1d048754ac5245a8d23d77b9ad816,
-    type: 2}
-  m_PrefabInternal: {fileID: 941722215}
-  m_GameObject: {fileID: 564358725}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Poly:
-    m_Paths:
-    - - {x: .389999986, y: .0949999988}
-      - {x: .349999994, y: .155000001}
-      - {x: .189999998, y: .324999988}
-      - {x: .119999997, y: .324999988}
-      - {x: -.0700000003, y: .224999994}
-      - {x: -.330000013, y: .0850000009}
-      - {x: -.389999986, y: .0549999997}
-      - {x: -.389999986, y: -.0949999988}
-      - {x: -.360000014, y: -.254999995}
-      - {x: -.280000001, y: -.324999988}
-      - {x: .0900000036, y: -.324999988}
-      - {x: .310000002, y: -.305000007}
-      - {x: .360000014, y: -.264999986}
-      - {x: .389999986, y: -.104999997}
 --- !u!212 &564358728
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1435,7 +1408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &670155208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3033,7 +3006,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400032, guid: b9f1d048754ac5245a8d23d77b9ad816, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b9f1d048754ac5245a8d23d77b9ad816, type: 2}
@@ -4113,7 +4086,7 @@ Transform:
   m_Children:
   - {fileID: 561763269}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!50 &1432016208
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -4413,7 +4386,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1580823478}
   - 212: {fileID: 1580823480}
-  - 60: {fileID: 1580823479}
   m_Layer: 0
   m_Name: Cheese
   m_TagString: Cheese
@@ -4433,32 +4405,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1700900076}
   m_RootOrder: 6
---- !u!60 &1580823479
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6000002, guid: b9f1d048754ac5245a8d23d77b9ad816,
-    type: 2}
-  m_PrefabInternal: {fileID: 941722215}
-  m_GameObject: {fileID: 1580823477}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Poly:
-    m_Paths:
-    - - {x: .389999986, y: .0949999988}
-      - {x: .349999994, y: .155000001}
-      - {x: .189999998, y: .324999988}
-      - {x: .119999997, y: .324999988}
-      - {x: -.0700000003, y: .224999994}
-      - {x: -.330000013, y: .0850000009}
-      - {x: -.389999986, y: .0549999997}
-      - {x: -.389999986, y: -.0949999988}
-      - {x: -.360000014, y: -.254999995}
-      - {x: -.280000001, y: -.324999988}
-      - {x: .0900000036, y: -.324999988}
-      - {x: .310000002, y: -.305000007}
-      - {x: .360000014, y: -.264999986}
-      - {x: .389999986, y: -.104999997}
 --- !u!212 &1580823480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4554,7 +4500,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1581797928}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.79, y: -14.0900002, z: 0}
+  m_LocalPosition: {x: -16.5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1046387808}
