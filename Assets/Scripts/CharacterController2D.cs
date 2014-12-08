@@ -104,6 +104,7 @@ public class CharacterController2D : MonoBehaviour {
 			if(mouseTrans.localScale.y == -1)
 			mouseTrans.localScale = new Vector3(mouseTrans.localScale.x,1,1);
 			isGrounded = true;
+			canClimb = true;
 		}
 	}
 
