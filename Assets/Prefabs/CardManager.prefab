@@ -178,7 +178,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Points:
   - {x: -7.76678562, y: -5.52212381}
   - {x: 7.81380558, y: -5.52212381}
