@@ -1,27 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Door : MonoBehaviour {
-	CharController2D player;
-	Collider2D[] stuff;
-	public string goal;
-	public int cheeseGoal = 0;
+public class Door : MonoBehaviour
+{
+	public Sprite OpenSprite;
+	public int CheeseGoal = 0;
+	public string NextLevelName;
 
-	// Use this for initialization
-	void Start () {
+	CharController2D player;
+	SpriteRenderer sr;
+	ParticleSystem poof;
+
+	void Start ()
+	{
 		player = FindObjectOfType (typeof(CharController2D)) as CharController2D;
-		stuff = player.GetComponentsInChildren<Collider2D> ();
+		sr = GetComponent<SpriteRenderer>();
+		poof = GetComponent<ParticleSystem>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space) && 0 == cheeseGoal) {	
-			foreach(Collider2D thing in stuff){
-				if(renderer.bounds.Intersects(thing.bounds)){
-					Application.LoadLevel (goal);
-					break;
-				}
-			}
+	void Open ()
+	{
+		sr.sprite = OpenSprite;
+		poof.Play();
+	}	
+	
+	void OnTriggerStay2D ()
+	{
+		if (Input.GetKeyDown (KeyCode.Space) && 0 == CheeseGoal)
+		{	
+			Application.LoadLevel (NextLevelName);
 		}
 	}
 }
