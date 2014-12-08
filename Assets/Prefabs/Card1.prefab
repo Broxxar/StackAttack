@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 61: {fileID: 6100002}
   - 212: {fileID: 21200000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Card1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cdeda0b766e751479c3605a27877f5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scale: 2
   moveSpeed: 12
   scaleUpSpeed: 6
   scaleDownSpeed: 12
@@ -480,6 +479,8 @@ MonoBehaviour:
   - {fileID: 21200004}
   - {fileID: 21200002}
   inStack: 1
+  rotateFocus: 0
+  targetRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
