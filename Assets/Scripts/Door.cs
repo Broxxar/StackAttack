@@ -2,15 +2,16 @@
 using System.Collections;
 
 public class Door : MonoBehaviour {
-	CharController2D player;
+	CharacterController2D player;
 	Collider2D[] stuff;
 	public string goal;
 	public int cheeseGoal = 0;
 
 	// Use this for initialization
 	void Start () {
-		player = FindObjectOfType (typeof(CharController2D)) as CharController2D;
+		player = FindObjectOfType (typeof(CharacterController2D)) as CharacterController2D;
 		stuff = player.GetComponentsInChildren<Collider2D> ();
+
 	}
 	
 	// Update is called once per frame

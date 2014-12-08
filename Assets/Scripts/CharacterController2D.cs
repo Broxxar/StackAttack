@@ -4,6 +4,7 @@ using System.Collections;
 public class CharacterController2D : MonoBehaviour {
 	Vector2 walkSpeed = new Vector2 (3,0);
 	Vector2 climbSpeed = new Vector2(0,3);
+	public int numCheese = 0;
 	bool isGrounded = false; //to know when mouse can walk
 	bool canClimb = false;   
 	Rigidbody2D body ;
@@ -25,11 +26,13 @@ public class CharacterController2D : MonoBehaviour {
 		if (isGrounded) {//only want him to move sideways when on a platform
 			mouseVertical.gameObject.SetActive( false);
 			mouseHorizontal.gameObject.SetActive(true);
-			if (Input.GetKey (KeyCode.A)) {
-					body.MovePosition (body.position - walkSpeed * Time.deltaTime);
+			if (Input.GetKey (KeyCode.A )|| Input.GetKey (KeyCode.LeftArrow)) {
+				mouseTrans.localScale = new Vector3(-1,1,1);
+				body.MovePosition (body.position - walkSpeed * Time.deltaTime);
 				anim.SetBool("Running", true);
-			} else if (Input.GetKey (KeyCode.D)) {
-					body.MovePosition (body.position + walkSpeed * Time.deltaTime);
+			} else if (Input.GetKey (KeyCode.D) || Input.GetKey(KeyCode.RightArrow) ){
+				mouseTrans.localScale = new Vector3(1,1,1);
+				body.MovePosition (body.position + walkSpeed * Time.deltaTime);
 				anim.SetBool("Running", true);
 			} else{
 				anim.SetBool("Running", false);
@@ -39,7 +42,8 @@ public class CharacterController2D : MonoBehaviour {
 			if(ladder.collider2D.enabled){
 				gameObject.rigidbody2D.gravityScale = 0;
 
-				if (Input.GetKey (KeyCode.S)) {
+					if (Input.GetKey (KeyCode.S)| Input.GetKey(KeyCode.DownArrow)) {
+					mouseTrans.localScale = new Vector3(1,-1,1);
 					mouseVertical.SetActive( true);
 					mouseHorizontal.SetActive(false);
 					anim.SetBool("pushingButton", true);
@@ -48,7 +52,8 @@ public class CharacterController2D : MonoBehaviour {
 					gameObject.layer = 9;
 					body.MovePosition (new Vector2(ladder.transform.position.x,body.position.y) - climbSpeed * Time.deltaTime);
 
-				} else if (Input.GetKey (KeyCode.W)) {
+					} else if (Input.GetKey (KeyCode.W)| Input.GetKey(KeyCode.UpArrow)) {
+					mouseTrans.localScale = new Vector3(1,1,1);
 					mouseVertical.SetActive( true);
 					mouseHorizontal.SetActive(false);
 					anim.SetBool("pushingButton", true);
@@ -72,6 +77,13 @@ public class CharacterController2D : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.gameObject.CompareTag ("Ladder")) {
 			ladder = other.gameObject;
+		}else if (other.gameObject.CompareTag("Cheese")){
+			if (numCheese == 0){
+				Destroy(other.gameObject);
+				mouseHorizontal.transform.FindChild("Cheese").gameObject.SetActive( true);
+				mouseVertical.transform.FindChild("Cheese").gameObject.SetActive(true);
+			}
+			numCheese++;
 		}
 	}
 
@@ -88,6 +100,8 @@ public class CharacterController2D : MonoBehaviour {
 
 	void OnCollisionStay2D(Collision2D other){
 		if(other.gameObject.CompareTag("Ground")){
+			if(mouseTrans.localScale.y == -1)
+			mouseTrans.localScale = new Vector3(mouseTrans.localScale.x,1,1);
 			isGrounded = true;
 		}
 	}
