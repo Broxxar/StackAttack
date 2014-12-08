@@ -55,7 +55,7 @@
 
 			float4 frag (v2f i) : COLOR
 			{
-				float4 col = tex2D(_MainTex, i.worldcoord /20.0);
+				float4 col = tex2D(_MainTex, i.worldcoord /20);
 				return col;
 			}
 				

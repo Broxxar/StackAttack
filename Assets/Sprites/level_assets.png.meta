@@ -14,7 +14,8 @@ TextureImporter:
     21300018: ladder_4
     21300020: platform_4
     21300022: chunk_o_cheese
-    21300024: level_assets_12
+    21300024: door_open
+    21300026: door_closed
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -176,12 +177,22 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: level_assets_12
+    - name: door_open
       rect:
         serializedVersion: 2
         x: 660
         y: 375
         width: 104
+        height: 105
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: door_closed
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 375
+        width: 110
         height: 105
       alignment: 0
       pivot: {x: .5, y: .5}
