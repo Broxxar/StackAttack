@@ -16,7 +16,7 @@ public class Door : MonoBehaviour
 	{
 		player = FindObjectOfType (typeof(CharacterController2D)) as CharacterController2D;
 		sr = GetComponent<SpriteRenderer>();
-		poof = GetComponent<ParticleSystem>();
+		poof = GetComponentInChildren<ParticleSystem>();
 		
 		if (CheeseGoal == 0)
 		{
