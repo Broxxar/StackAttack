@@ -6573,6 +6573,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 722565335}
   - 212: {fileID: 722565334}
+  - 95: {fileID: 722565336}
   m_Layer: 0
   m_Name: dogpile_logo
   m_TagString: Untagged
@@ -6614,6 +6615,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!95 &722565336
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 722565333}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad34d98c8764bb240a2d02bd87c9d9d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &772174778
 GameObject:
   m_ObjectHideFlags: 0
