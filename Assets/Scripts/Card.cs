@@ -16,9 +16,9 @@ public class Card : MonoBehaviour
 	private Collider2D collide;
 	private CardManager cm;
 	public bool inStack = false;
-	public bool rotateFocus = false;
-	public Vector3 targetRotation;
-	public float zTimes = 0;
+	 bool rotateFocus = false;
+	 Vector3 targetRotation;
+	 float zTimes = 0;
 	Card[] cards;
 
 	void Awake (){

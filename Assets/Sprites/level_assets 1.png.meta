@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: 59e5a336b5a064debb7c773a5280b553
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: level_assets 1_0
+    21300002: level_assets 1_1
+    21300004: level_assets 1_2
+    21300006: level_assets 1_3
+    21300008: level_assets 1_4
+    21300010: level_assets 1_5
+    21300012: level_assets 1_6
+    21300014: level_assets 1_7
+    21300016: level_assets 1_8
+    21300018: level_assets 1_9
+    21300020: level_assets 1_10
+    21300022: level_assets 1_11
+    21300024: level_assets 1_12
+    21300026: level_assets 1_13
+    21300028: level_assets 1_14
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: level_assets 1_0
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 501
+        width: 104
+        height: 505
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_1
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 801
+        width: 105
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_2
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 401
+        width: 104
+        height: 605
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 439
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_4
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 439
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_5
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 437
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_6
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 437
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_7
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 370
+        width: 104
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_8
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 486
+        width: 105
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_9
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 317
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_10
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 316
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_11
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 316
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_12
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 314
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_13
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 370
+        width: 104
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: level_assets 1_14
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 370
+        width: 110
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
